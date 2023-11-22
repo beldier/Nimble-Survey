@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">NimbleSurvey</string>
+    <string name="survey">Survey</string>
+    <string name="home">Home</string>
+    <string name="login">Login</string>
 </resources>
