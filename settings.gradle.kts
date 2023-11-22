@@ -15,4 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "NimbleSurvey"
 include(":app")
- 
+include(":data")
+include(":useCases")
+include(":domain")
