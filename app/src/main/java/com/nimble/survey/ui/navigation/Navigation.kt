@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.nimble.survey.ui.screens.HomeScreen
+import com.nimble.survey.ui.screens.login.LoginScreen
 import com.nimble.survey.ui.screens.SurveyScreen
 
 @Composable
@@ -16,7 +17,7 @@ fun Navigation(
 ) {
     NavHost(
         navController = navController,
-        startDestination = NavCommand.Home.baseRoute
+        startDestination = NavCommand.Login.baseRoute
     ) {
         homeNav(navController)
         loginNav(navController)
@@ -29,7 +30,7 @@ private fun NavGraphBuilder.loginNav(
     navController: NavController,
 ) {
     composable(NavCommand.Login) {
-
+        LoginScreen()
     }
 }
 

@@ -20,7 +20,7 @@ secrets = "2.0.1"
 junit = "4.13.2"
 kotlin = "1.9.10"
 koin_version = "3.4.2"
-koin_ksp_version = "1.2.2"
+koin_ksp_version = "1.2.1"
 ksp = "1.9.10-1.0.13"
 material="1.5.4"
 mockk = "1.13.8"
@@ -58,8 +58,9 @@ datastore = { module = "androidx.datastore:datastore", version.ref = "dataStore"
 datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "dataStorePreference" }
 dep-google-secrets-gradle-plugin = { module = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version.ref = "secrets" }
 junit = { module = "junit:junit", version.ref = "junit" }
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin_version" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin_version" }
-koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin_ksp_version" }
+koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin_version" }
 koin-annotations = { group = "io.insert-koin", name = "koin-annotations", version.ref = "koin_ksp_version" }
 koin_ksp = { group = "io.insert-koin", name = "koin-ksp-compiler", version.ref = "koin_ksp_version" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }

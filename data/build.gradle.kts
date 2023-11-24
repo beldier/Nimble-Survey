@@ -19,4 +19,7 @@ java {
 
 dependencies{
     implementation(project(":domain"))
+    implementation(libs.koin.core)
+    implementation(libs.koin.annotations)
+    ksp (libs.koin.ksp)
 }

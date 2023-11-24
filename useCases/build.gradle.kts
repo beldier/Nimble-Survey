@@ -2,13 +2,22 @@
 plugins {
     id("java-library")
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.ksp)
 }
+// Use KSP Generated sources
+sourceSets.main {
+    java.srcDirs("build/generated/ksp/main/kotlin")
+}
+
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
 }
-dependencies{
+dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(libs.koin.core)
+    implementation(libs.koin.annotations)
+    ksp (libs.koin.ksp)
 }

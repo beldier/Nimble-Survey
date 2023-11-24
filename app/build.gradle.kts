@@ -38,7 +38,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = JavaVersion.VERSION_17.toString()
+
     }
     buildFeatures {
         compose = true
@@ -91,6 +92,13 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material)
 
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.annotations)
+    implementation(libs.koin.ksp)
+    implementation(libs.koin.androidx.compose)
+    ksp (libs.koin.ksp)
+
     implementation(libs.dep.google.secrets.gradle.plugin)
 
     implementation(libs.okhttp)
@@ -107,7 +115,6 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.mockk)
     testImplementation(libs.turbine)
     testImplementation(libs.core.testing)
 
