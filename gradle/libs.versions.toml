@@ -10,6 +10,7 @@ androidxRoom = "2.6.0"
 androidxTest = "1.5.0"
 androidxTestExt = "1.1.5"
 androidxTestRunner = "1.5.2"
+arrow = "1.2.0"
 coilCompose = "2.5.0"
 converterGson = "2.9.0"
 coreTesting = "2.1.0"
@@ -51,6 +52,7 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTest" }
 androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidxTestExt" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxTestRunner" }
+arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }

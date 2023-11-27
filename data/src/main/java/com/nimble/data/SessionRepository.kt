@@ -6,11 +6,20 @@ import org.koin.core.annotation.Factory
 @Factory
 class SessionRepository (private val secureInformation: SensitiveInformationDataSource) {
 
-    fun saveAuthToken(token: String) {
-        secureInformation.saveAuthToken(token)
+    fun setAuthToken(token: String) {
+        secureInformation.setAuthToken(token)
     }
 
-    fun fetchAuthToken(): String? {
-        return secureInformation.fetchAuthToken()
+    fun setRefreshToken(token:String){
+        secureInformation.setRefreshToken(token)
+    }
+
+    fun getRefreshToken(): String? {
+        return secureInformation.getRefreshToken()
+    }
+
+
+    fun getAuthToken(): String? {
+        return secureInformation.getAuthToken()
     }
 }

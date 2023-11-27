@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
-// Use KSP Generated sources
+ //Use KSP Generated sources
 sourceSets.main {
     java.srcDirs("build/generated/ksp/main/kotlin")
 }
@@ -21,5 +21,7 @@ dependencies{
     implementation(project(":domain"))
     implementation(libs.koin.core)
     implementation(libs.koin.annotations)
+    implementation(libs.arrow.core)
+
     ksp (libs.koin.ksp)
 }

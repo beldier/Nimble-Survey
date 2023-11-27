@@ -99,6 +99,8 @@ dependencies {
     implementation(libs.koin.androidx.compose)
     ksp (libs.koin.ksp)
 
+    implementation(libs.arrow.core)
+
     implementation(libs.dep.google.secrets.gradle.plugin)
 
     implementation(libs.okhttp)

@@ -1,4 +1,4 @@
-package com.nimble.survey.data.server.model
+package com.nimble.survey.data.server.models
 
 import com.google.gson.annotations.SerializedName
 
@@ -11,5 +11,5 @@ data class LoginBody (
 )
 
 enum class GrantType(val value:String){
-    PASSWORD("password")
+    PASSWORD("password"),REFRESH_TOKEN("refresh_token")
 }

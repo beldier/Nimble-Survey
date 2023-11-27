@@ -1,6 +1,7 @@
 package com.nimble.survey.data.server
 
 import android.content.Context
+import com.nimble.data.SessionRepository
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,12 +12,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
 @Single
-class RemoteConnection(authInterceptor: Interceptor) {
+class RemoteConnection(private val sessionManager: SessionRepository) {
 
     private val okHttpClient = HttpLoggingInterceptor().run {
         level = HttpLoggingInterceptor.Level.BODY
         OkHttpClient.Builder().addInterceptor(this)
-            .addInterceptor(authInterceptor).build()
+            .addInterceptor(AuthInterceptor(sessionManager, this@RemoteConnection)).build()
     }
 
     private val builder = Retrofit.Builder()
@@ -27,7 +28,6 @@ class RemoteConnection(authInterceptor: Interceptor) {
 
     val remoteService: RemoteService = builder.create()
     val authService: AuthService = builder.create()
-
 
 
 }
