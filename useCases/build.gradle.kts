@@ -19,5 +19,7 @@ dependencies {
     implementation(project(":data"))
     implementation(libs.koin.core)
     implementation(libs.koin.annotations)
+    implementation(libs.arrow.core)
+
     ksp (libs.koin.ksp)
 }

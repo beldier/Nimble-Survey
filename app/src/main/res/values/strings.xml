@@ -4,4 +4,6 @@
     <string name="home">Home</string>
     <string name="login">Login</string>
     <string name="nimble_logo">Nimble Logo</string>
+    <string name="survey_error">Survey Error</string>
+    <string name="ok">Ok</string>
 </resources>

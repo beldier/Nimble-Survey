@@ -6,14 +6,7 @@ import org.koin.core.annotation.Factory
 @Factory
 class LoginRepository(private val loginDataSource: LoginDataSource) {
 
-    suspend fun performLogin(email: String, password: String) {
-        loginDataSource.login(email, password).fold(
-            ifLeft = {
+    suspend fun performLogin(email: String, password: String) =
+        loginDataSource.login(email, password)
 
-            },
-            ifRight = {
-
-            }
-        )
-    }
 }

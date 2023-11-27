@@ -2,6 +2,7 @@ package com.nimble.survey.ui.screens.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nimble.domain.AppError
 import com.nimble.usescases.PerformLoginUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,32 +12,58 @@ import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
-class LoginViewModel (
+class LoginViewModel(
     private val performLoginUseCase: PerformLoginUseCase
-): ViewModel(){
+) : ViewModel() {
 
     private val _dataState = MutableStateFlow(DataState())
     val dataState: StateFlow<DataState> = _dataState.asStateFlow()
+
+    private val _uiState = MutableStateFlow(UIState())
+    val uiState: StateFlow<UIState> = _uiState.asStateFlow()
+
     data class DataState(
         val email: String = "",
         val password: String = "",
     )
 
-    fun performLogin(){
+    data class UIState(
+        val appError: AppError? = null
+    )
+    fun performLogin() {
         viewModelScope.launch {
-            performLoginUseCase(_dataState.value.email,_dataState.value.password)
+            performLoginUseCase(_dataState.value.email, _dataState.value.password).fold(
+                ifLeft = {
+                    updateError(it)
+                },
+                ifRight = {
+
+                }
+            )
         }
     }
 
-    fun updateEmail(email:String){
-        _dataState.update {
-            _dataState.value.copy(email = email,)
+    fun updateError(appError: AppError?){
+        _uiState.update {
+            _uiState.value.copy(appError = appError)
         }
     }
 
-    fun updatePassword(password:String){
+    fun dismissDialog(){
+        _uiState.update {
+            _uiState.value.copy(appError = null)
+        }
+    }
+
+    fun updateEmail(email: String) {
         _dataState.update {
-            _dataState.value.copy(password = password,)
+            _dataState.value.copy(email = email)
+        }
+    }
+
+    fun updatePassword(password: String) {
+        _dataState.update {
+            _dataState.value.copy(password = password)
         }
     }
 }

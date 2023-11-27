@@ -23,9 +23,6 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -40,14 +37,18 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.nimble.survey.R
+import com.nimble.survey.ui.screens.shared.SimpleDialog
 import org.koin.androidx.compose.koinViewModel
 
 @Preview(device = Devices.PIXEL_2_XL)
 @Composable
 fun LoginScreen(viewModel: LoginViewModel = koinViewModel()) {
-
-
     val dataState by viewModel.dataState.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
+
+    uiState.appError?.let {
+        SimpleDialog(it) { viewModel.dismissDialog() }
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -95,9 +96,9 @@ fun LoginScreen(viewModel: LoginViewModel = koinViewModel()) {
                 color = Color.Black
             )
         }
-
     }
 }
+
 
 @Composable
 fun CustomLoginTextField(
