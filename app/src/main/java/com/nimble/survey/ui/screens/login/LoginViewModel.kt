@@ -30,26 +30,27 @@ class LoginViewModel(
     data class UIState(
         val appError: AppError? = null
     )
-    fun performLogin() {
+
+    fun performLogin(onLoginSuccess: () -> Unit) {
         viewModelScope.launch {
             performLoginUseCase(_dataState.value.email, _dataState.value.password).fold(
                 ifLeft = {
                     updateError(it)
                 },
                 ifRight = {
-
+                    onLoginSuccess()
                 }
             )
         }
     }
 
-    fun updateError(appError: AppError?){
+    fun updateError(appError: AppError?) {
         _uiState.update {
             _uiState.value.copy(appError = appError)
         }
     }
 
-    fun dismissDialog(){
+    fun dismissDialog() {
         _uiState.update {
             _uiState.value.copy(appError = null)
         }

@@ -30,7 +30,9 @@ private fun NavGraphBuilder.loginNav(
     navController: NavController,
 ) {
     composable(NavCommand.Login) {
-        LoginScreen()
+        LoginScreen(){
+            navController.navigate(NavCommand.Survey.baseRoute)
+        }
     }
 }
 
