@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.secrets.google)
 }
 
 android {
@@ -37,10 +38,12 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = JavaVersion.VERSION_17.toString()
+
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
@@ -76,6 +79,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.constraintlayout.compose)
     implementation(libs.coil.compose)
 
     implementation(libs.androidx.lifecycle.runtime.compose)
@@ -87,8 +91,20 @@ dependencies {
 
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material)
 
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.annotations)
+    implementation(libs.koin.ksp)
+    implementation(libs.koin.androidx.compose)
+    ksp (libs.koin.ksp)
+
+    implementation(libs.arrow.core)
+
+    implementation(libs.dep.google.secrets.gradle.plugin)
+
+    implementation(libs.okhttp)
     implementation(libs.retrofit)
 
     implementation(libs.datastore)
@@ -102,7 +118,6 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.mockk)
     testImplementation(libs.turbine)
     testImplementation(libs.core.testing)
 
@@ -110,4 +125,8 @@ dependencies {
     androidTestImplementation(libs.androidx.navigation.testing)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.runner)
+}
+
+secrets {
+    propertiesFileName = "secrets.properties"
 }
